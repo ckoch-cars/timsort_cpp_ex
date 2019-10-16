@@ -15,4 +15,8 @@ defmodule TimsortCppExTest do
     assert TimsortCppEx.sort([1, 2, 3]) == [1, 2, 3]
     assert TimsortCppEx.sort([2, 1, 3]) == [1, 2, 3]
   end
+
+  test "sorts a four element list" do
+    assert TimsortCppEx.sort([9, 3, 101, 0]) == [0, 3, 9, 101]
+  end
 end
