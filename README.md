@@ -1,6 +1,18 @@
 # TimsortCppEx
 
-**TODO: Add description**
+TimsortCppEx implements the C++ library TimSort, which is an implementation of the TimSort context-aware sorting algorithm.
+
+  - See: [TimSort](http://en.wikipedia.org/wiki/Timsort)
+
+  - See: [cpp-TimSort](https://github.com/timsort/cpp-TimSort)
+
+
+## Requirements
+
+TimsortCppEx requires cmake to compile.
+
+See [Installing CMake](https://cmake.org/install/)
+
 
 ## Installation
 
