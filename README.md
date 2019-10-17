@@ -13,6 +13,14 @@ TimsortCppEx requires cmake to compile.
 
 See [Installing CMake](https://cmake.org/install/)
 
+In order to use the TimSort library from Elixir, you will need to compile timsort.cpp to run on your machine. `mix.exs` has some steps to make a best-effort to handle this.
+
+TimSort (C++) is built with CMake. The command to run and build the library should be: `cmake -H. -Ssrc/cpp-TimSort -DCMAKE_BUILD_TYPE=Release -Bpriv/cpp-TimSort`
+
+When compiling src/timsort.cpp to work for your local environment, you may need to update the g++ args specified in Mix.Tasks.Compile.TimSort.run/1 (mix.exs)
+The "-I" flag arg will need to reflect your local installation of Erlang
+`"-I/Users/christiankoch/erlang/22.0/erts-10.4/include"`
+
 
 ## Installation
 

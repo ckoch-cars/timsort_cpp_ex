@@ -10,7 +10,10 @@ defmodule TimsortCppEx do
   end
 
   @doc """
-  Sort with TimSort
+  Sort a list with TimSort
+  Current NIF impl only accepts a list of integers.
+  TimSort can handle a list of strings.
+  TODO: implements other types, or defer the types to TimSort to handle
 
   ## Examples
 
@@ -18,7 +21,11 @@ defmodule TimsortCppEx do
       [2,3,7,9]
 
   """
+  @spec sort([]) :: []
+  def sort([]), do: []
+
+  @spec sort([integer()]) :: [integer()]
   def sort(_list) do
-    raise "NIF sort/1 not implemented"
+    raise :erlang.nif_error("NIF library not loaded")
   end
 end
