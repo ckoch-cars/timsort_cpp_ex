@@ -2,6 +2,10 @@ defmodule TimsortCppExTest do
   use ExUnit.Case
   doctest TimsortCppEx
 
+  test "handles an empty list" do
+    assert TimsortCppEx.sort([]) == []
+  end
+
   test "sorts a single element list" do
     assert TimsortCppEx.sort([1]) == [1]
   end
