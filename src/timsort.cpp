@@ -69,7 +69,10 @@ sort_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 }
 
 // Map the Elixir fn to the C nif_func.
-static ErlNifFunc nif_funcs[] = {{"sort", 1, sort_nif}};
+static ErlNifFunc nif_funcs[] = {
+    {"sort", 1, sort_nif},
+    {"sort_d", 1, sort_nif, ERL_NIF_DIRTY_JOB_CPU_BOUND}
+};
 
 // ERL_NIF_INIT(Elixir.TimsortCppEx, nif_funcs, load, reload, upgrade, unload);
 ERL_NIF_INIT(Elixir.TimsortCppEx, nif_funcs, nullptr, nullptr, nullptr, nullptr);

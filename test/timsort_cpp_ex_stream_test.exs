@@ -44,4 +44,19 @@ defmodule TimsortCppExStreamTest do
       assert List.first(sorted_list) == Enum.min(list)
     end
   end
+
+  # @tag :skip
+  property "sort_d sorts very large lists" do
+    check all(list <- list_of(integer(), min_length: 100_000), max_runs: 1) do
+      sorted_list = TimsortCppEx.sort_d(list)
+
+      assert List.first(sorted_list) == Enum.min(list)
+    end
+
+    check all(list <- list_of(integer(), min_length: 1_000_000), max_runs: 1) do
+      sorted_list = TimsortCppEx.sort_d(list)
+
+      assert List.first(sorted_list) == Enum.min(list)
+    end
+  end
 end

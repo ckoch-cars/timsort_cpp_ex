@@ -28,4 +28,22 @@ defmodule TimsortCppEx do
   def sort(_list) do
     raise :erlang.nif_error("NIF library not loaded")
   end
+
+  @doc """
+  Sort a list with TimSort
+  Enable support for Beam Dirty Scheduler
+
+  ## Examples
+
+      iex> TimsortCppEx.sort_d([9,7,2,3])
+      [2,3,7,9]
+
+  """
+  @spec sort_d([]) :: []
+  def sort_d([]), do: []
+
+  @spec sort_d([integer()]) :: [integer()]
+  def sort_d(_list) do
+    raise :erlang.nif_error("NIF library not loaded")
+  end
 end
