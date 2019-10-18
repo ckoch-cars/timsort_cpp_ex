@@ -23,6 +23,7 @@ defmodule Mix.Tasks.Compile.TimSort do
           "-shared",
           "-opriv/timsort.so",
           # Include ERTS so we can find erl_nif.h at compile time.
+          # This will be unique to your system.
           "-I$HOME/erlang/22.0/erts-10.4/include",
           # Include the incatation `-dynamiclib -undefined dynamic_lookup` to the compiler,
           # otherwise the the compilation works, but with an error about not being able to
@@ -34,6 +35,8 @@ defmodule Mix.Tasks.Compile.TimSort do
         ],
         stderr_to_stdout: true
       )
+
+    # g++ --std=c++11 -O3 -fpic -shared -opriv/timsort.so -I/Users/christiankoch/erlang/22.0/erts-10.4/include src/timsort.cpp
 
     IO.binwrite(result)
 
@@ -60,14 +63,12 @@ defmodule TimsortCppEx.MixProject do
   def application do
     [
       extra_applications: [:logger]
-      # extra_applications: [:logger, :porcelain]
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [{:stream_data, "~> 0.4"}]
-    # [{:porcelain, "~> 2.0"}]
   end
 
   defp aliases do
@@ -79,9 +80,6 @@ defmodule TimsortCppEx.MixProject do
         "cmd echo ",
         "cmd echo '********************************************'",
         "cmd cd src/cpp-TimSort/build && CTest && cd ../../.."
-        # "cmd echo '************^^^^^^^^^^^^^^^^************'",
-        # "cmd echo 'Run TimSortCppEx elixir tests: '",
-        # "cmd echo '************^^^^^^^^^^^^^^^^************'"
       ],
       test_ex: [
         "cmd echo '*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^'",
@@ -89,12 +87,9 @@ defmodule TimsortCppEx.MixProject do
         "cmd echo 'Run TimSortCppEx elixir tests:'",
         "cmd echo ",
         "cmd echo '********************************************'",
-        # "cmd echo ",
         "test"
       ],
       test_all: ["test_c", "test_ex"]
     ]
   end
 end
-
-# g++ --std=c++11 -O3 -fpic -shared -opriv/timsort.so -I/Users/christiankoch/erlang/22.0/erts-10.4/include src/timsort.cpp
