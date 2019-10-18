@@ -24,6 +24,10 @@ The "-I" flag arg will need to reflect your local installation of Erlang
 
 ## Installation
 
+Timsort needs to be comiled for your system however you only need to CMake timsort once on the system (and any time there are changes to the timsort C++ code).
+
+Run `./src/setup.sh` to build (CMake) timsort for your system.
+
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `timsort_cpp_ex` to your list of dependencies in `mix.exs`:
 

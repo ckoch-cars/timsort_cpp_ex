@@ -2,21 +2,6 @@ defmodule Mix.Tasks.Compile.TimSort do
   def run(_) do
     File.mkdir_p("priv/cpp-TimSort")
 
-    # if File.exists?("src/cpp-TimSort/include/gfx/timsort.hpp") do
-    #   IO.puts("timsort.hpp appears to exist. Skipping the CMake step")
-    # else
-    #   IO.puts("timsort.hpp appears not to exist. Running CMake")
-
-    #   {result, _error_code} =
-    #     System.cmd(
-    #       "cmake",
-    #       ["-H.", "-Ssrc/cpp-TimSort", "-Bpriv/cpp-TimSort", "-DCMAKE_BUILD_TYPE=Release"],
-    #       stderr_to_stdout: true
-    #     )
-
-    #   IO.binwrite(result)
-    # end
-
     {result, _errcode} =
       System.cmd(
         "echo",
@@ -87,16 +72,27 @@ defmodule TimsortCppEx.MixProject do
 
   defp aliases do
     [
-      test: [
-        "cmd echo '************^^^^^^^^^^^^^^^^************'",
-        "cmd echo 'Run TimSort C++ tests: '",
-        "cmd echo '************^^^^^^^^^^^^^^^^************'",
-        "cmd cd src/cpp-TimSort/build && CTest && cd ../../..",
-        "cmd echo '************^^^^^^^^^^^^^^^^************'",
-        "cmd echo 'Run TimSortCppEx elixir tests: '",
-        "cmd echo '************^^^^^^^^^^^^^^^^************'",
+      test_c: [
+        "cmd echo '*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^'",
+        "cmd echo ",
+        "cmd echo 'Run TimSort C++ tests:'",
+        "cmd echo ",
+        "cmd echo '********************************************'",
+        "cmd cd src/cpp-TimSort/build && CTest && cd ../../.."
+        # "cmd echo '************^^^^^^^^^^^^^^^^************'",
+        # "cmd echo 'Run TimSortCppEx elixir tests: '",
+        # "cmd echo '************^^^^^^^^^^^^^^^^************'"
+      ],
+      test_ex: [
+        "cmd echo '*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^'",
+        "cmd echo ",
+        "cmd echo 'Run TimSortCppEx elixir tests:'",
+        "cmd echo ",
+        "cmd echo '********************************************'",
+        # "cmd echo ",
         "test"
-      ]
+      ],
+      test_all: ["test_c", "test_ex"]
     ]
   end
 end
