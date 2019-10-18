@@ -79,7 +79,7 @@ defmodule TimsortCppEx.MixProject do
         "cmd echo 'Run TimSort C++ tests:'",
         "cmd echo ",
         "cmd echo '********************************************'",
-        "cmd cd src/cpp-TimSort/build && CTest && cd ../../.."
+        "cmd cd priv/cpp-TimSort/build && CTest"
       ],
       test_ex: [
         "cmd echo '*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^*~_~*^'",
