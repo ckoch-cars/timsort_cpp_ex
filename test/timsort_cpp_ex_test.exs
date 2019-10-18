@@ -10,11 +10,6 @@ defmodule TimsortCppExTest do
     assert TimsortCppEx.sort([1]) == [1]
   end
 
-  @tag :skip
-  test "sorts a single element string list" do
-    assert TimsortCppEx.sort(["A"]) == ["A"]
-  end
-
   test "sorts a two element list" do
     assert TimsortCppEx.sort([1, 2]) == [1, 2]
     assert TimsortCppEx.sort([2, 1]) == [1, 2]
@@ -29,6 +24,23 @@ defmodule TimsortCppExTest do
     assert TimsortCppEx.sort([9, 3, 101, 0]) == [0, 3, 9, 101]
   end
 
+  test "sorts a four element list of floats" do
+    assert TimsortCppEx.sort([9.1, 9.11, 9.101, 9.0]) == [9.0, 9.1, 9.101, 9.11]
+  end
+
+  # @tag :skip
+  test "sorts a single element string list" do
+    # assert TimsortCppEx.sort(["A"]) == ["A"]
+    assert TimsortCppEx.sort(["A"]) == {:error, "sort/1 not implemented for this type of list"}
+  end
+
+  test "sorts a list of strings" do
+    assert TimsortCppEx.sort(["b", "apple", "A"]) ==
+             {:error, "sort/1 not implemented for this type of list"}
+
+    # assert TimsortCppEx.sort(["b", "apple", "A"]) == ["A", "apple", "b"]
+  end
+
   describe "sort_d Dirty Scheduler" do
     test "sorts a single element list" do
       assert TimsortCppEx.sort_d([1]) == [1]
@@ -36,6 +48,10 @@ defmodule TimsortCppExTest do
 
     test "sorts a four element list" do
       assert TimsortCppEx.sort_d([9, 3, 101, 0]) == [0, 3, 9, 101]
+    end
+
+    test "sorts a four element list of floats" do
+      assert TimsortCppEx.sort_d([9.1, 9.11, 9.101, 9.0]) == [9.0, 9.1, 9.101, 9.11]
     end
   end
 end
