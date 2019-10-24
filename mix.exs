@@ -6,7 +6,7 @@ defmodule Mix.Tasks.Compile.TimSort do
       System.cmd(
         "echo",
         [
-          "************^^^^^^^^^^^^^^^^************\nCompiling NIF with src/timsort.cpp\n************^^^^^^^^^^^^^^^^************"
+          "************^^^^^^^^^^^^^^^^************\nCompiling NIFs with src/timsort.cpp\n************^^^^^^^^^^^^^^^^************"
         ],
         stderr_to_stdout: true
       )
@@ -55,6 +55,7 @@ defmodule TimsortCppEx.MixProject do
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       compilers: [:tim_sort] ++ Mix.compilers(),
+      preferred_cli_env: [test_all: :test],
       deps: deps()
     ]
   end

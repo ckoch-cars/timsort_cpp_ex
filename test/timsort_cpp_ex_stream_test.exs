@@ -23,7 +23,7 @@ defmodule TimsortCppExStreamTest do
   end
 
   property "sorts large lists of floats, verify length, first, and last" do
-    check all(list <- list_of(float(), min_length: 1000)) do
+    check all(list <- list_of(float(), min_length: 1000), max_runs: 10) do
       sorted_list = TimsortCppEx.sort(list)
       assert length(list) == length(sorted_list)
       assert List.first(sorted_list) == Enum.min(list)
